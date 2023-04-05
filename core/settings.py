@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     'category',
     'store',
     # 'product',
-    # 'cart',
+    'carts',
     # 'order',
     # 'payment',
     'accounts',
@@ -71,7 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'category.context_processors.menu_links'
+                'category.context_processors.menu_links',
+                'carts.context_processors.counter',
             ],
         },
     },
@@ -141,3 +142,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Add these new lines
 AUTH_USER_MODEL = 'accounts.Account'
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+DEFAULT_FROM_EMAIL = 'atlantida.goods@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER='atlantida.goods@gmail.com'
+EMAIL_HOST_PASSWORD='bgpmztybcnpuxbss'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
